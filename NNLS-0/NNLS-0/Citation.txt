@@ -1,0 +1,11 @@
+******* Citation Information *****************************
+If you find the software NNLS
+useful, please cite it in you publication as follows:
+
+[Reference]
+[1] K.C. Toh, and S.W. Yun    
+    An accelerated proximal gradient algorithm for nuclear norm regularized 
+    least squares problems,  preprint, National University of Singapore, 
+    Apr 2009.  
+Available at: http://www.optimization-online.org/DB_HTML/2009/03/2268.html
+
