@@ -1,8 +1,8 @@
 A MATLAB software for SVLS algorithm
 Authors: Avishai Wagner and Or Zuk
 
-This is software for solving problams of low matrix recovery
-from rows and columns affine measurements using algorithm SVLS.
+The software package solves the problem of low-rank matrix recovery from rows and columns affine measurements 
+using the Singular-Value-Least-Squares (SVLS) algorithm.
 
 Installation:
 =============
@@ -27,7 +27,10 @@ Some of the files in the Simulations directory use other packages, since we comp
 
 3. APGL, from :http://www.math.nus.edu.sg/~mattohkc/NNLS.html
 
-The Simulations directory also uses the package MaUtils for different basic usful functions.
+4. Some Matlab commands available in latest versions: isrow, 
+
+5. The Simulations directory also uses the package MaUtils for different basic useful functions, availabel from here: 
+https://github.com/orzuk/MatUtils
 
 Getting Started: 
 ================
@@ -62,13 +65,13 @@ samp_matrix - sample a random low-rank matrix
 
 All_Simulations - Generate random matrices and random measurements, estimate the original matrix using recovery algorithms and evaluate results 
 
-make_SVLS_paper_figures - script running and producing all figures shown in paper [1].
+make_SVLS_paper_figures - script running and producing all the figures shown in paper [1].
 
 
 Acknowledgment:
 ===============
 
-SVLS was developed by Avishai Wagner and Or Zuk, as part of work on the papers,
+SVLS was developed by Avishai Wagner and Or Zuk, as part of work on the paper:
 
 [1] Low-Rank Matrix Recovery from Row-and-Column Affine Measurements", A. Wagner and O. Zuk
 
