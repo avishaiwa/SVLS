@@ -1,12 +1,14 @@
 
 % Plot all simulation figures shown in the SVLS paper
 AssignGeneralConstants;
-% Set master directory
-if(exist('C:\Users\user\Dropbox\matrix completion\', 'dir'))
-    master_dir =  'C:\Users\user\Dropbox\matrix_completion\src\my_thesis';
+% Set master directory. Please change this to a directory where SVLS is installed 
+if(exist('C:\Users\user\Documents\GitHub\SVLS\', 'dir'))
+    master_dir =  'C:\Users\user\Documents\GitHub\SVLS';
 else
     master_dir =  'C:\Users\Avishay\Dropbox\matrix_completion\src\my_thesis';
 end
+figs_dir = fullfile(master_dir, 'figs'); 
+data_Dir = fullfile(master_dir, 'data'); 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Parameters:

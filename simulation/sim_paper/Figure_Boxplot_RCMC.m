@@ -10,8 +10,8 @@ alg_iters=100; tol=10^-5;
 k_vec= (8:2:16);
 
 % Output file names
-DataFileName = fullfile(['results_vec\boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
-FigureFileName = fullfile(['results_pic\boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
+DataFileName = fullfile(data_dir, ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
+FigureFileName = fullfile(figs_dir, ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %data_file_name = fullfile(master_dir, 'results_vec', ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %figure_file_name = fullfile(master_dir, 'results_pic', ['boxplot_n_' num2str(n) '_r_' num2str(r)  '_sigma_' num2str(noise) ]);
 

@@ -14,8 +14,8 @@ losses_array = cell(length(tau_vec), length(alg_str));
 times_array = losses_array; iters_array = losses_array;
 
 % Output file names 
-DataFileName = fullfile(['results_vec\boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
-FigureFileName = fullfile(['results_pic\boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
+DataFileName = fullfile(data_dir, ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
+FigureFileName = fullfile(figs_dir, ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %data_file_name = fullfile(master_dir, 'results_vec', ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %figure_file_name = fullfile(master_dir, 'results_pic',%['boxplot_n_'%num2str(n) '_r_' num2str(r)  '_sigma_' num2str(noise) ]);
 

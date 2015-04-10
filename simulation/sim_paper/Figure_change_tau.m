@@ -10,8 +10,8 @@ num_sampled_matrices=10;
 r_vec = [2 4 6 8]; % change rank 
 
 % Output file names 
-data_file_name = fullfile(master_dir, 'results_vec', ['tau_n_' num2str(n) '_k_' num2str(k) '.m']); 
-figure_file_name = fullfile(master_dir, 'results_pic', ['tau_n_' num2str(n) '_k_' num2str(k) ]); 
+data_file_name = fullfile(data_dir, ['tau_n_' num2str(n) '_k_' num2str(k) '.m']); 
+figure_file_name = fullfile(figs_dir,  ['tau_n_' num2str(n) '_k_' num2str(k) ]); 
 
 if(simulate_flag)
 rel_error_mat = zeros(length(tau), length(r_vec)); 
