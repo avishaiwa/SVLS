@@ -27,7 +27,7 @@ Some of the files in the Simulations directory use other packages, since we comp
 
 3. APGL, from :http://www.math.nus.edu.sg/~mattohkc/NNLS.html
 
-4. Some Matlab commands available in latest versions: isrow, 
+4. Some Matlab commands available in latest versions: isrow, strsplit
 
 5. The Simulations directory also uses the package MaUtils for different basic useful functions, availabel from here: 
 https://github.com/orzuk/MatUtils
