@@ -40,13 +40,17 @@ An example running the SVLS algorithm is available in the file: test_SVLS
 Directories: 
 =============
 
-Algorithms - recovery algorithms, including the SVLS algorithm
+(*) algorithms_SVLS - recovery algorithms, including the SVLS algorithm
 
-Simulations - Scripts for running and testing the package
+(*) simulations - Scripts for running and testing the package
 
-Figs - directory with figures generating during the running of functions
+(*) sampleMatrix - functions for sampling both the unknown matrix and the measurements matrices under different models 
 
-Data - simulation results saved to files 
+(*) figs - directory with figures generating during the running of functions
+
+(*) data - simulation results saved to files 
+
+(*) Additional directories contains needed packages and other algorithms for comparison 
 
 
 Files:
