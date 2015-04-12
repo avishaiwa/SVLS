@@ -1,8 +1,7 @@
 A MATLAB software for SVLS algorithm
 Authors: Avishai Wagner and Or Zuk
 
-The software package solves the problem of low-rank matrix recovery from rows and columns affine measurements 
-using the Singular-Value-Least-Squares (SVLS) algorithm.
+The software package solves the problem of low-rank matrix recovery from rows and columns affine measurements using the Singular-Value-Least-Squares (SVLS) algorithm.
 
 Installation:
 =============
