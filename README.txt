@@ -76,7 +76,7 @@ Acknowledgment:
 
 SVLS was developed by Avishai Wagner and Or Zuk, as part of work on the paper:
 
-[1] Low-Rank Matrix Recovery from Row-and-Column Affine Measurements", A. Wagner and O. Zuk
+[1] Low-Rank Matrix Recovery from Row-and-Column Affine Measurements", A. Wagner and O. Zuk, ICML 2015
 
 Please cite the above paper if using the package.
 
