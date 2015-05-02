@@ -6,7 +6,7 @@ The software package solves the problem of low-rank matrix recovery from rows an
 Installation:
 =============
 
-Download the SVLS directory from https://github.com/orzuk/SVLS. 
+Download the SVLS directory from https://github.com/avishaiwa/SVLS. 
 Use the "Download ZIP" button on the right hand side of the page. 
 Once done, uncompress it, and follow the introductory files listed below.
 
