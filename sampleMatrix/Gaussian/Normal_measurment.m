@@ -3,7 +3,7 @@
 % Input:
 % m - matrix of size nXn
 %
-% Output
+% Output:
 % map - matrix from size pXn^2 as described above map(m) = a*vec(m).
 % tmap = a'  (transpose of map)
 % am = map(m) + noise*N(0,1)
