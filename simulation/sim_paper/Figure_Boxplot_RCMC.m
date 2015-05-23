@@ -21,7 +21,7 @@ if(simulate_flag)
     save(DataFileName, 'losses', 'times', 'iterations', 'n', 'r', 'k_vec', 'alg_str', ...
         'measurement_type', 'alg_iters', 'num_sampled_matrices', 'tol');
 else
-    load(data_file_name);
+    load(DataFileName );
 end
 
 % Make figure

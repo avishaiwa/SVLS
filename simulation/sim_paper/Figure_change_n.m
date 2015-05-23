@@ -14,7 +14,7 @@ color_vec={'r','b'};
 
 
 % Output file names
-DataFileName = fullfile(['results_vec\plot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
+DataFileName = fullfile(['results_vec\plot_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 FigureFileName = fullfile(['results_pic\plot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %data_file_name = fullfile(master_dir, 'results_vec', ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %figure_file_name = fullfile(master_dir, 'results_pic', ['boxplot_n_'%num2str(n) '_r_' num2str(r)  '_sigma_' num2str(noise) ]);
@@ -36,7 +36,7 @@ if(simulate_flag)
     save(DataFileName , 'rel_error_mat', 'n_vec', 'r', 'k', 'tau_vec', ...
         'measurement_type', 'num_sampled_matrices', 'tol');
 else
-    load(data_file_name);
+    load(DataFileName);
 end
 
 %% Plot figure
@@ -49,16 +49,17 @@ xlabel('$n$','Interpreter','latex','FontSize',17);
 hLegend = legend(findall(gca,'Tag','Box'), {' \tau=0.01','\tau=0.1'});
 hChildren = findall(get(hLegend,'Children'), 'Type','Line');
 legend boxoff
-my_saveas(gcf, FigureFileName,  {'epsc', 'pdf', 'fig'});%%%%%%
+%my_saveas(gcf, FigureFileName,  {'epsc', 'pdf', 'fig'});%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Second Figure: tau=0.01, changing n,k and r
 num_sampled_matrices=100;
+data_file_name = fullfile(master_dir, 'results_vec', ['change_n_p_r_oversamp_4_n_over_r_20']);
+    figure_file_name = fullfile(master_dir, 'results_pic', ['change_n_p_r_oversamp_4_n_over_r_20' ]);
+    
 if(simulate_flag)
     rel_error_mat = zeros(length(n_vec),num_sampled_matrices,length(tau_vec));
     r_vec = 1:100; n_vec = 20.*r_vec; k_vec=4.*r_vec; % set n,k,r
-    data_file_name = fullfile(master_dir, 'results_vec', ['change_n_p_r_oversamp_4_n_over_r_20' '.m']);
-    figure_file_name = fullfile(master_dir, 'results_pic', ['change_n_p_r_oversamp_4_n_over_r_20' ]);
     
     
     for t=1:length(tau_vec)
@@ -89,4 +90,4 @@ xlabel('$n$','Interpreter','latex','FontSize',17);
 hLegend = legend(findall(gca,'Tag','Box'), {' \tau=0.01','\tau=0.1'});
 hChildren = findall(get(hLegend,'Children'), 'Type','Line');
 legend boxoff
-my_saveas(gcf, FigureFileName,  {'epsc', 'pdf', 'fig'});%%%%%%
+my_saveas(gcf, figure_file_name,  {'epsc', 'pdf', 'fig'});%%%%%%

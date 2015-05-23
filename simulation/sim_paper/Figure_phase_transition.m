@@ -10,7 +10,7 @@ measurement_type={'random_entries','random_entries','columns_and_rows'};
 alg_iters= [500, 500, 100];
 
 % Output file names
-data_file_name = fullfile(master_dir, 'results_vec', ['phase_transition_n_' num2str(n) '_r_' num2str(r) '.m']);
+data_file_name = fullfile(master_dir, 'results_vec', ['phase_transition_n_' num2str(n) '_r_' num2str(r) '.mat']);
 figure_file_name = fullfile(master_dir, 'results_pic', ['phase_transition_n_' num2str(n) '_r_' num2str(r)]);
 
 if(simulate_flag)
@@ -29,7 +29,7 @@ end
 % Plot Figure
 d_over_n_sqr_vec = 2*n*k_vec/n^2;
 symbol_vec = {'s', '*', 'o'};
-color_vec = {'g','r','b'};
+color_vec = {'k','r','b'};
 figure; hold on
 for i=1:length(alg_str)
     plot(d_over_n_sqr_vec, mean(success_arr{i}), ['--' color_vec{i} symbol_vec{i}]);
@@ -38,7 +38,7 @@ end
 ylabel('Reconstruction Rate','FontSize',17)
 xlabel('$d/n^2$','Interpreter','latex','FontSize',17);
 
-hLegend = legend(findall(gca,'Tag','Box'), {'SVT MC','optSpace MC','SVLS RCMC'});
+hLegend = legend(findall(gca,'Tag','Box'), {'SVT MC','optSpace MC','SVLS RCMC'},'Location','southeast');
 hChildren = findall(get(hLegend,'Children'), 'Type','Line');
 set(hChildren(6),'Color','black')
 set(hChildren(4),'Color','r')

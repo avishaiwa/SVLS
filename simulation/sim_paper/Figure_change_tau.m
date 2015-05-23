@@ -10,7 +10,7 @@ num_sampled_matrices=10;
 r_vec = [2 4 6 8]; % change rank 
 
 % Output file names 
-data_file_name = fullfile(master_dir, 'results_vec', ['tau_n_' num2str(n) '_k_' num2str(k) '.m']); 
+data_file_name = fullfile(master_dir, 'results_vec', ['tau_n_' num2str(n) '_k_' num2str(k)]); 
 figure_file_name = fullfile(master_dir, 'results_pic', ['tau_n_' num2str(n) '_k_' num2str(k) ]); 
 
 if(simulate_flag)
@@ -42,7 +42,7 @@ end
 
 %ylim([0 0.04]);
 xlabel('$\tau$','Interpreter','latex','FontSize',17);   ylabel('RRMSE','FontSize',17);
-hLegend = legend(findall(gca,'Tag','Box'), {'r=2','r=4','r=6','r=8'});
+hLegend = legend(findall(gca,'Tag','Box'), {'r=2','r=4','r=6','r=8'},'Location','southeast');
 hChildren = findall(get(hLegend,'Children'), 'Type','Line');
 legend boxoff
 
