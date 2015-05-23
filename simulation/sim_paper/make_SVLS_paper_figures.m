@@ -1,14 +1,12 @@
 
 % Plot all simulation figures shown in the SVLS paper
 AssignGeneralConstants;
-% Set master directory. Please change this to a directory where SVLS is installed 
-if(exist('C:\Users\user\Documents\GitHub\SVLS\', 'dir'))
-    master_dir =  'C:\Users\user\Documents\GitHub\SVLS';
+% Set master directory
+if(exist('C:\Users\user\Dropbox\matrix completion\', 'dir'))
+    master_dir =  'C:\Users\user\Dropbox\matrix_completion\src\my_thesis';
 else
     master_dir =  'C:\Users\Avishay\Dropbox\matrix_completion\src\my_thesis';
 end
-figs_dir = fullfile(master_dir, 'figs'); 
-data_Dir = fullfile(master_dir, 'data'); 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Parameters:
@@ -45,3 +43,16 @@ Figure_change_n;
 %%%Figure 6: change tau
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Figure_change_tau; 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%Figure 7: change tau
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Figure_rank_est_sim;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%Figure 8: change tau
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Figure_SVLS_p_SIM
+
+
+

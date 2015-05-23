@@ -4,7 +4,7 @@
 
 
 % Set parameters
-n=100; r=2; X_type='low_rank'; 
+n=100; r=2; X_type='low_rank'; noise=0;
 k_vec=[2:10,12:2:20]; % number of row and columns measurements 
 num_sampled_matrices = 10; % how many samples for each parameter value
 
@@ -14,8 +14,8 @@ losses_array = cell(length(tau_vec), length(alg_str));
 times_array = losses_array; iters_array = losses_array;
 
 % Output file names 
-DataFileName = fullfile(data_dir, ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
-FigureFileName = fullfile(figs_dir, ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
+DataFileName = fullfile(['results_vec\boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
+FigureFileName = fullfile(['results_pic\boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %data_file_name = fullfile(master_dir, 'results_vec', ['boxplot_n_' num2str(n) '_r_' num2str(r) '_sigma_' num2str(noise) '.mat']);
 %figure_file_name = fullfile(master_dir, 'results_pic',%['boxplot_n_'%num2str(n) '_r_' num2str(r)  '_sigma_' num2str(noise) ]);
 
@@ -26,7 +26,7 @@ for i=1:length(tau_vec) % run and compute losses
             tol = 10^-5; 
             measurement_type= 'columns_and_rows_normal';
         else % apgl
-            alg_num_iters=2000; 
+            alg_num_iters=600; 
             tol = 10^-7;
             measurement_type= 'gaussian';
         end

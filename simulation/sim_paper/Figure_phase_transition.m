@@ -10,8 +10,8 @@ measurement_type={'random_entries','random_entries','columns_and_rows'};
 alg_iters= [500, 500, 100];
 
 % Output file names
-data_file_name = fullfile(data_dir ['phase_transition_n_' num2str(n) '_r_' num2str(r) '.m']);
-figure_file_name = fullfile(figs_Dir, ['phase_transition_n_' num2str(n) '_r_' num2str(r)]);
+data_file_name = fullfile(master_dir, 'results_vec', ['phase_transition_n_' num2str(n) '_r_' num2str(r) '.m']);
+figure_file_name = fullfile(master_dir, 'results_pic', ['phase_transition_n_' num2str(n) '_r_' num2str(r)]);
 
 if(simulate_flag)
     losses_arr = cell(length(alg_str),1); success_arr=losses_arr; times_arr=losses_arr; iters_arr=losses_arr;
@@ -40,7 +40,7 @@ xlabel('$d/n^2$','Interpreter','latex','FontSize',17);
 
 hLegend = legend(findall(gca,'Tag','Box'), {'SVT MC','optSpace MC','SVLS RCMC'});
 hChildren = findall(get(hLegend,'Children'), 'Type','Line');
-set(hChildren(6),'Color','g')
+set(hChildren(6),'Color','black')
 set(hChildren(4),'Color','r')
 set(hChildren(2),'Color','b')
 legend boxoff

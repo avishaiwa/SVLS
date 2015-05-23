@@ -4,12 +4,13 @@
 % X - the true matrix (optional, not used by algorithm - just for error evaluation)
 % am - measurements
 % alg - String - the algorithm to implement
+% r - the rank of m
 % k - number of row and columns that are sampled
 % noise - STD of the measurements
-% maximum_iter - maximum iteretions in gradient descent
+% maximum_iter - maximum iteretion in gradient descent
 % tol - stopping rule for greadient descent
-% measure - affine measurements (structure)
-% (r - rank (optional) ?? currently not supplied)
+% measure - affine measurements
+% r - rank (optional) ??
 %
 % Output:
 % X_hat - estimated matrix
