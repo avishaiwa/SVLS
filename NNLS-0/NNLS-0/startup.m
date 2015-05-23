@@ -1,3 +1,0 @@
-
-addpath('PROPACKmod');
-addpath('solver');
