@@ -49,6 +49,8 @@ Directories:
 
 (*) result_vec - simulation results saved to files 
 
+(*) fig_paper - the figures represent in paper [1].
+
 (*) Additional directories contains needed packages and other algorithms for comparison 
 
 
