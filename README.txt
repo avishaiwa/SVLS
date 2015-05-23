@@ -45,9 +45,9 @@ Directories:
 
 (*) sampleMatrix - functions for sampling both the unknown matrix and the measurements matrices under different models 
 
-(*) figs - directory with figures generating during the running of functions
+(*) result_pic - directory with figures generating during the running of functions
 
-(*) data - simulation results saved to files 
+(*) result_vec - simulation results saved to files 
 
 (*) Additional directories contains needed packages and other algorithms for comparison 
 
@@ -56,6 +56,8 @@ Files:
 ======
 SVLS - implementation of the SVLS  algorithm 
 
+SVLS_p - implementation of the SVLS_p  algorithm 
+
 Symmetric_SVLS - implement algorithm SVLS for symmetric matrices
 
 gradient_descent - minimize the loss function (||Ar(X)-Br||_F)^2+(||(X)Ac-Bc||_F)^2
@@ -63,6 +65,8 @@ gradient_descent - minimize the loss function (||Ar(X)-Br||_F)^2+(||(X)Ac-Bc||_F
 Symmetric_gradientDescent - minimize the loss function (||Ar(X)-Br||_F)^2
 
 AffineMatrixRecovery - a 'Master' recovery function, recovers a matrix from affine measurements by calling the appropriate algorithm
+
+RRMSE - calculating RRMSE
 
 samp_matrix - sample a random low-rank matrix 
 
