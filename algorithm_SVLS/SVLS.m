@@ -14,7 +14,7 @@ function [X, est_r] = SVLS( Br,Bc,Ar,Ac,r, direction )
 
 % Estimate rank using elbow method
 if (~exist('r', 'var') || isempty(r))
-    fprintf(1,'Rank not specified. Trying to guess ...\n');
+  %  fprintf(1,'Rank not specified. Trying to guess ...\n');
     s = svd(Bc);
     [~, r] = max(s(1:end-1)./s(2:end)); est_r = r
 end

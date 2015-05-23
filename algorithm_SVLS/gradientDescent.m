@@ -21,7 +21,6 @@
 function [X,dis] = gradientDescent( X_hat,Br,Bc,Ar,Ac,r, ...
     alg_str,tol, max_iter )
 % using steepest decsent to estimate X when X*ac = Bc and ar*X=Br (whithout noise)
-alg_str
 if(~exist('tol', 'var') || isempty(tol))
     tol = 0.00001; % set default tolerance
 end
