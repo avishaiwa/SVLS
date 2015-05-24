@@ -1,7 +1,8 @@
 A MATLAB software for SVLS algorithm
 Authors: Avishai Wagner and Or Zuk
 
-The software package solves the problem of low-rank matrix recovery from rows and columns affine measurements using the Singular-Value-Least-Squares (SVLS) algorithm.
+The software package solves the problem of low-rank matrix recovery from rows and columns affine measurements 
+using the Singular-Value-Least-Squares (SVLS) algorithm.
 
 Installation:
 =============
@@ -18,7 +19,8 @@ Dependencies:
 =============
 The SVLS algorithm uses the PROPACKmod package for computing fast singular value decomposition. You can download PROPACKmod from here:  http://sun.stanford.edu/~rmunk/PROPACK/
 
-Some of the files in the Simulations directory use other packages, since we compare SVLS to other algorithms. To be able to run these comparisons, you will have to download and install the following packages: 
+Some of the files in the Simulations directory use other packages, since we compare SVLS to other algorithms. 
+To be able to run all of these comparisons, you will have to download and install the following packages: 
 
 1. optSpace, from : http://web.engr.illinois.edu/~swoh/software/optspace/code.html
 
@@ -26,9 +28,9 @@ Some of the files in the Simulations directory use other packages, since we comp
 
 3. APGL, from :http://www.math.nus.edu.sg/~mattohkc/NNLS.html
 
-4. Some Matlab commands available in latest versions: isrow, strsplit
+4. The package uses a few Matlab commands available in latest versions: isrow, strsplit
 
-5. The Simulations directory also uses the package MaUtils for different basic useful functions, availabel from here: 
+5. The Simulations directory also uses the MatUtils package with different useful basic functions, available from here: 
 https://github.com/orzuk/MatUtils
 
 Getting Started: 
@@ -49,7 +51,7 @@ Directories:
 
 (*) result_vec - simulation results saved to files 
 
-(*) fig_paper - the figures represent in paper [1].
+(*) fig_paper - the figures present in the paper [1].
 
 (*) Additional directories contains needed packages and other algorithms for comparison 
 
@@ -72,9 +74,10 @@ RRMSE - calculating RRMSE
 
 samp_matrix - sample a random low-rank matrix 
 
-All_Simulations - Generate random matrices and random measurements, estimate the original matrix using recovery algorithms and evaluate results 
+All_Simulations - Generate random matrices and random measurements, estimate the original matrix using 
+recovery algorithms and evaluate results 
 
-make_SVLS_paper_figures - script running and producing all the figures shown in paper [1].
+make_SVLS_paper_figures - a script for producing and plotting all the figures shown in paper [1].
 
 
 Acknowledgment:
