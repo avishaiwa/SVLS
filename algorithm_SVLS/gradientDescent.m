@@ -1,10 +1,10 @@
-% Minimize f(x,y) = ||Ar*W*S'-Br||^2 + ||W*S'*Ac-Bc|^2|  using the
+% Minimize F(x,y) = ||Ar*W*S'-Br||^2 + ||W*S'*Ac-Bc|^2|  using the
 % gradient-descent algorithm.
-% Note: this assumes that elements which were sample twice (in their row and column)
+% Note: this assumes that elements which were sampled twice (in their row and column)
 % are considered twice in the loss function.
 %
 % Input:
-% X_hat - starting point of the algorithm (product X*Y' for starting point)
+% X_hat - starting point of the algorithm (can use product X*Y' for starting point)
 % Br = Ar*X + Normal(0,noise)
 % Bc = X*Ac + Normal(0,noise)
 % Ar = matrix size pXn - row measurements
@@ -73,9 +73,13 @@ while( (norm(X1-X0,'fro')>tol) && (iter<max_iter))
 end
 X = optT*optS;
 
+dis=dis(1:iter); % update number of iterations performed 
+
 end
 
 % Internal function: the gradient of the cost function.
+% W is gradient with respect to T, 
+% Z is gradient with respect to S,
 function [W, Z] = GradLs(T,S,Br,Bc,ar,ac)
 W = ar'*(ar*T*S-Br)*S'+(T*S*ac-Bc)*ac'*S';
 Z = T'*ar'*(ar*T*S-Br)+T'*(T*S*ac-Bc)*ac';
