@@ -41,7 +41,9 @@ switch X_type
         v = randn(n2,r)/r^0.25;
         m = u*v' + 0*randn(n1,n2);
     case 'symmetric_low_rank'
-        m = u*u';
+        lambda = diag(randn(r,1));
+        lambda = lambda/norm(lambda,'fro');
+        m = u*lambda*u';
 end
 
 % Next, sample measurements

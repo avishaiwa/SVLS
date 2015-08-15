@@ -18,8 +18,8 @@ function [AA, bb] = row_column_to_general_affine(Ar, Ac, Br, Bc)
 % Create big matrices with Kronecker products
 AA = [kron(eye(n2), Ar)' kron(Ac', eye(n1))']'; % make big measurements matrix
 
-bb = [mat2vec(Br)' mat2vec(Bc)']; % vectorize measurements
-
+%bb = [mat2vec(Br)' mat2vec(Bc)']; % vectorize measurements
+bb = [Br(:)' Bc(:)']; 
 end
 
 
