@@ -18,7 +18,7 @@
 % X - estimation of m without any noise
 % dis - matrix of distances (errors, divided into two terms) as function of iteration
 %
-function [X,dis] = alternating_LS( X_hat,Br,Bc,Ar,Ac,r, ...
+function [X,dis] = Alternating_LS( X_hat,Br,Bc,Ar,Ac,r, ...
     alg_str,tol, max_iter )
 
 % using steepest decsent to estimate X when X*ac = Bc and ar*X=Br (whithout noise)
