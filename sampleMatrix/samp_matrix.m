@@ -44,6 +44,9 @@ switch X_type
         lambda = diag(randn(r,1));
         lambda = lambda/norm(lambda,'fro');
         m = u*lambda*u';
+    case 'positive_definite_low_rank'
+        m=u*u'; 
+    
 end
 
 % Next, sample measurements
