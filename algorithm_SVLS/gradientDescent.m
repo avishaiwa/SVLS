@@ -70,6 +70,8 @@ while( (norm(X1-X0,'fro')>tol) && (iter<max_iter))
 
     %%loss function
     dis(iter)=F_t(optT,optS,Br,Bc,Ar,Ac);
+        fprintf('Iter=%d L2 Loss=%3.3f\n', iter, dis(iter))
+
 end
 X = optT*optS;
 
