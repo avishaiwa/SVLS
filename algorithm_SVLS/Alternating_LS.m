@@ -1,5 +1,5 @@
-% Minimize F(x,y) = ||Ar*W*S'-Br||^2 + ||W*S'*Ac-Bc|^2|  using the
-% gradient-descent algorithm.
+% Minimize F(W,S) = ||Ar*W*S'-Br||_F^2 + ||W*S'*Ac-Bc||_F^2|  using the
+% alternating least-squares algorithm.
 % Note: this assumes that elements which were sampled twice (in their row and column)
 % are considered twice in the loss function.
 %
@@ -10,7 +10,6 @@
 % Ar = matrix size pXn - row measurements
 % Ac = matrix size nXp - column measurements
 % r -  rank r of unknown matrix N
-% alg_str - which algorithm to use (default is standard gradient descent)
 % tol - tolerance for stopping criteria
 % max_iter - maximum # of iterations allowed
 %
@@ -18,8 +17,8 @@
 % X - estimation of m without any noise
 % dis - matrix of distances (errors, divided into two terms) as function of iteration
 %
-function [X,dis] = Alternating_LS( X_hat,Br,Bc,Ar,Ac,r, ...
-    alg_str,tol, max_iter )
+function [X, dis] = Alternating_LS( X_hat, Br, Bc, Ar, Ac, r, ...
+    tol, max_iter)
 
 % using steepest decsent to estimate X when X*ac = Bc and ar*X=Br (whithout noise)
 if(~exist('tol', 'var') || isempty(tol))
@@ -27,9 +26,6 @@ if(~exist('tol', 'var') || isempty(tol))
 end
 if(~exist('max_iter', 'var') || isempty(max_iter))
     max_iter = 100; % set default # of iterations
-end
-if(~exist('alg_str', 'var') || isempty(alg_str))
-    alg_str = 'gradient_descent'; % set default algorithm
 end
 
 % Problem! for small n lansvd sometimes fails! replace it with 'standard' SVD
@@ -50,7 +46,7 @@ prev_X = X_hat;
 dis=zeros(1,max_iter);
 iter=0;
 new_X = randn(size(prev_X)); % why take a random matrix?
-k_r = size(Ar,1); k_c = size(Ac,2); % get number of measurements
+[k_r, n1] = size(Ar); [n2, k_c] = size(Ac); % get number of measurements
 
 
 % Create big matrices with Kronecker products
@@ -63,7 +59,23 @@ while( (norm(prev_X-new_X,'fro')>tol) && (iter<max_iter))
     [U_mat, V_mat, x_vec2] = bilinear_to_general_affine(U, V); % compute representation
     
     new_V = (big_A*U_mat) \ big_b'; old_V=V; V=vec2mat(new_V, r); % change V while U is kept fixed
-    intermediate_dis = F_t(U,V',Br,Bc,Ar,Ac)
+    
+    run_kronecker_least_squares=0; 
+    if(run_kronecker_least_squares) % NEW! try to simplfy U matrix using Kronecker products 
+        big_A_times_U_mat2 = [kron(eye(n2), (Ar*U)') kron(Ac, U')]';
+        A_trans_A = big_A_times_U_mat2'*big_A_times_U_mat2; 
+        A_trans_A2 = kron(eye(n2), (Ar*U)'*(Ar*U)) + kron(Ac*Ac', U'*U);            
+        A_trans_A_inv = inv(A_trans_A);
+    
+        % Compute generalized SVD (take transpose) 
+        [U11,U12,V1,Diag11,Diag12] = gsvd(eye(n2),Ac);
+        [U21,U22,V2,Diag21,Diag22] = gsvd((Ar*U),U);
+        
+        % Next, perform QR-decomposition for the matrices: 
+        
+    end % if run_kronecker_least_squares
+    
+    intermediate_dis = row_column_l2_loss(U,V',Br,Bc,Ar,Ac)
     [U_mat, V_mat, x_vec2] = bilinear_to_general_affine(U, V); % compute representation again
     new_U = (big_A*V_mat) \ big_b';  old_U=U; U=vec2mat(new_U, size(X_hat,1))'; % change U while V is kept fixed
     
@@ -84,9 +96,4 @@ end % function
 
 
 
-%loss function (should be it's own function)
-function L2_loss = F_t(T,S,Br,Bc,Ar,Ac)
-
-L2_loss =0.5*norm(Ar*T*S-Br,'fro')^2+0.5*norm(T*S*Ac-Bc,'fro')^2;
-end
 

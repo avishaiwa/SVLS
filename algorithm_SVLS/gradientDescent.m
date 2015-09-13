@@ -18,8 +18,8 @@
 % X - estimation of m without any noise
 % dis - matrix of distances (errors, divided into two terms) as function of iteration
 %
-function [X,dis] = gradientDescent( X_hat,Br,Bc,Ar,Ac,r, ...
-    alg_str,tol, max_iter )
+function [X, dis] = gradientDescent( X_hat, Br, Bc, Ar, Ac, r, ...
+    alg_str, tol, max_iter)
 % using steepest decsent to estimate X when X*ac = Bc and ar*X=Br (whithout noise)
 if(~exist('tol', 'var') || isempty(tol))
     tol = 0.00001; % set default tolerance
@@ -69,7 +69,7 @@ while( (norm(X1-X0,'fro')>tol) && (iter<max_iter))
        norm(X1-X0,'fro')
 
     %%loss function
-    dis(iter)=F_t(optT,optS,Br,Bc,Ar,Ac);
+    dis(iter)=row_column_l2_loss(optT,optS,Br,Bc,Ar,Ac);
         fprintf('Iter=%d L2 Loss=%3.3f\n', iter, dis(iter))
 
 end
@@ -94,20 +94,15 @@ W = ar(i,:)'*((ar(i,:)*T)*S-Br(i,:))*S'+(T*(S*ac(:,j))-Bc(:,j))*ac(:,j)'*S';
 Z = T'*ar(i,:)'*((ar(i,:)*T)*S-Br(i,:))+T'*(T*(S*ac(:,j))-Bc(:,j))*ac(:,j)';
 end
 
-%loss function
-function out = F_t(T,S,Br,Bc,Ar,Ac)
-
-out=0.5*norm(Ar*T*S-Br,'fro')^2+0.5*norm(T*S*Ac-Bc,'fro')^2;
-end
 
 %Compute optimal step size - based on ???
 function out = getoptAlpha(T,W,S,Z,Br,Bc,Ar,Ac)
 norm2WZ = norm(W,'fro')^2 + norm(Z,'fro')^2;
-f(1) = F_t(T,S,Br,Bc,Ar,Ac);
+f(1) = row_column_l2_loss(T,S,Br,Bc,Ar,Ac);
 
 t = -1e-1 ;
 for i = 1:20
-    f(i+1) = F_t(T+t*W,S+t*Z,Br,Bc,Ar,Ac) ;
+    f(i+1) = row_column_l2_loss(T+t*W,S+t*Z,Br,Bc,Ar,Ac) ;
     
     if( f(i+1) - f(1) <= .5*(t)*norm2WZ )
         out = t ;
