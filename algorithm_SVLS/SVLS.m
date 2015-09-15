@@ -19,8 +19,8 @@ if (~exist('r', 'var') || isempty(r))
     [~, r] = max(s(1:end-1)./s(2:end)); est_r = r
 end
 
-[uC, ~, ~] = lansvd(Bc,r,'L','OPTIONS'); %find the r largest vectors and singulr values of Bc.
-[uR, ~, ~] = lansvd(Br',r,'L','OPTIONS'); %find the r largest vectors and singulr values of Br.
+[uC, ~, ~] = lansvd(Bc, r, 'L','OPTIONS'); %find the r largest vectors and singulr values of Bc.
+[uR, ~, ~] = lansvd(Br',r, 'L','OPTIONS'); %find the r largest vectors and singulr values of Br.
 
 if(~exist('direction', 'var') || isempty(direction))
     direction=0;
