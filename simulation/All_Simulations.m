@@ -1,4 +1,6 @@
 % Run simulations for low-rank matrix recovery
+% Simulate matrices and measurements, recover them from measurements using
+% an algorithm of choice, and record algorithm's performance
 %
 % Input:
 % n - size of matrix X to be sampled (assume square: nXn)
@@ -10,6 +12,7 @@
 % k_vec -  number of columns and rows (or measurements) that are sampled
 % X_type - Type of unknown matrix X: low_rank or symmetric_low_rank
 % measurement_type - uniform, columns_and_rows or normal
+% known_rank - 0: assume rank is unknown and estimate it (default). 1: assume rank is known
 %
 % Output:
 % losses, times and iterations are 3-dimentional arrays that store the RMSE,
@@ -21,7 +24,8 @@
 % with p measurements on the i-th run
 %
 function [ losses, times, iterations ] = All_Simulations( ...
-    n,r,noise,alg_str,num_sampled_matrices,maximum_iter,tol,k_vec ,X_type,measurement_type)
+    n, r, noise, alg_str, num_sampled_matrices, maximum_iter, tol, k_vec , ...
+    X_type, measurement_type, known_rank)
 
 
 if(~exist('tol', 'var') || isempty(tol))
@@ -39,6 +43,12 @@ end
 if(~exist('measurement_type', 'var') || isempty(measurement_type))
     measurement_type = 'columns_and_rows'; % set default measurements type
 end
+if(~exist('known_rank', 'var') || isempty(known_rank))
+    known_rank = 0; % default is estimating rank from data 
+end
+if(~known_rank) % set unknown rank 
+    r = []; 
+end
 
 
 num_algs = length(alg_str);
@@ -49,13 +59,12 @@ for j=1:length(k_vec) % loop on # of measurements
     simulate_k = k_vec(j) % ind = ind+1    
     for i=1:num_sampled_matrices % loop on iterations per measurement
         sprintf('Run k=%ld, iter=%ld out of %ld\n', k_vec(j), i, num_sampled_matrices) 
-        [X,measure] = ...
+        [X, measure] = ...
             samp_matrix(n, r, k_vec(j), noise, X_type, measurement_type);
         
         for t = 1:num_algs
             [~, times(i,j,t), losses(i,j,t), iterations(i,j,t)] = AffineMatrixRecovery( ...
-                X,  alg_str{t}, k_vec(j), noise, maximum_iter, tol, measure);
-                        
+                X,  alg_str{t}, k_vec(j), noise, maximum_iter, tol, measure, r);                        
         end
     end
 end

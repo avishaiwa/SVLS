@@ -8,8 +8,8 @@
 % Bc - matrix of size n2XkC (equal to X*Ac + noise)
 %
 % Output:
-% X - estimation of m without any noise
-% dis - matrix of distances (errors, divided into two terms) as function of iteration
+% AA - Matrix obtained by concatenating two kronecker product matrices 
+% bb - vector obtained by stacking the columns of Br and Bc and concatenating
 %
 function [AA, bb] = row_column_to_general_affine(Ar, Ac, Br, Bc)
 [kR, n1] = size(Ar); % get first dimensions
@@ -20,6 +20,5 @@ AA = [kron(eye(n2), Ar)' kron(Ac', eye(n1))']'; % make big measurements matrix
 
 %bb = [mat2vec(Br)' mat2vec(Bc)']; % vectorize measurements
 bb = [Br(:)' Bc(:)']; 
-end
 
 
