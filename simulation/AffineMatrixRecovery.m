@@ -141,6 +141,7 @@ end
 if(strfind(lower(alg_str), 'alternating')) % Choose algorithm for reconstruction % Next step: perform gradient descent to improve solution
     [X, iter_num] = Alternating_LS( X_hat, measure.Br, measure.Bc, measure.Ar, measure.Ac, r, ...
         tol, maximum_iter);  % here we assume r is known !   
+
     iter_num= length(iter_num);
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
