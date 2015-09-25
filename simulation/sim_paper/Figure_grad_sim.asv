@@ -17,7 +17,7 @@ tic
 t2 = toc
 tic
  [X1,dis1,result1] = Alternating_LS(X_hat, measure.Br, measure.Bc, measure.Ar, measure.Ac,r, ...
-    tol, max_iter,1,m);
+    tol, max_iter,1,],m);
 t3 = toc;
 tic
  [X1_rand,dis1_rand,result1_rand] = Alternating_LS3(randn(n), measure.Br, measure.Bc, measure.Ar, measure.Ac,r, ...

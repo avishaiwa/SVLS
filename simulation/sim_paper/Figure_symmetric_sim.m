@@ -11,7 +11,7 @@ for noise=tau
             [ m, measure ] = samp_matrix( ...
                 n,r,k,noise, X_type,measurement_type  );
             
-            [X_hat] = SVLS_sym( measure.Br, measure.Bc, measure.Ar, measure.Ac,[]);
+            [X_hat] = SVLS( measure.Br, measure.Bc, measure.Ar, measure.Ac,[]);
             temp(i) = RRMSE(X_hat,m);
             
         end
@@ -35,7 +35,7 @@ for noise=tau
             [ m, measure ] = samp_matrix( ...
                 n,r,k,noise, X_type,measurement_type  );
             
-            [X_hat] = SVLS_sym( measure.Br, measure.Bc, measure.Ar, measure.Ac,[]);
+            [X_hat] = SVLS( measure.Br, measure.Bc, measure.Ar, measure.Ac,[]);
             temp(i) = RRMSE(X_hat,m);
         end
         temp(temp>1)=1;

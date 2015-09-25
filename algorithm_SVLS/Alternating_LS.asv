@@ -140,8 +140,7 @@ while( (norm(prev_X-new_X,'fro')>tol) && (iter<max_iter))
         
     end % if run_kronecker_least_squares
     old_V=V; V=vec2mat(new_V, r);  % change V while U is kept fixed
-    size(U)
-    size(V)
+    size
     intermediate_dis = row_column_l2_loss(U,V',Br,Bc,Ar,Ac)
     
     if(~run_kronecker_least_squares) % compute using big matrix

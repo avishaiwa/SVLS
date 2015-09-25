@@ -48,9 +48,9 @@ end
 X1 = X_hat;
 dis=zeros(1,max_iter);
 dis(1) = row_column_l2_loss(optT,optS,Br,Bc,Ar,Ac);
+result = zeros(1,max_iter); % set default tolerance
 if(~exist('m', 'var') || isempty(tol))
-    result = zeros(1,max_iter); % set default tolerance
-    result(1) = RRMSE(X_hat,m);
+      result(1) = RRMSE(X_hat,m);
 end
 iter=1;
 X0 = randn(size(X1));
@@ -81,7 +81,7 @@ while( (norm(X1-X0,'fro')>tol) && (iter<max_iter))
         end
 end
 
-end
+
 X = optT*optS;
 
 dis=dis(1:iter); % update number of iterations performed 
