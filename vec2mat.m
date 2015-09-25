@@ -19,7 +19,8 @@
 % ## @deftypefnx {Function File} {@var{m} = } vec2mat (@var{v}, @var{c}, @var{d})
 % ## @deftypefnx {Function File} [{@var{m}, @var{add}] = } vec2mat (@var{..})
 % ##
-% ## Converts the vector @var{v} into a @var{c} column matrix with row priority
+% ## Converts the vector @var{v} into a @var{c} column matrix with row
+% priority
 % ## arrangement and with the final column padded with the value @var{d} to the
 % ## correct length. By default @var{d} is 0. The amount of padding added to
 % ## the matrix is returned in @var{add}.
