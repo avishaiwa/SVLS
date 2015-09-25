@@ -5,45 +5,29 @@
 % Ar - row design matrix
 % Ac - column design matrix
 % r - rank of unknown matrix (optional) 
-% direction - which estimator to take (rows/columns/both) 
 %
 % Output:
 % X - estimate of M where we minimize  ||m*ac-Bc||^2 +  ||ar*M-Br||^2
 % est_r - estimated rank (when rank r is unknown)
 %
-function [X, est_r] = SVLS( Br, Bc, Ar, Ac, r, direction)
-
-% Estimate rank using elbow method
+function [X, est_r] = SVLS( Br,Bc,Ar,Ac,r)
 if (~exist('r', 'var') || isempty(r))
-  %  fprintf(1,'Rank not specified. Trying to guess ...\n');
+    %  fprintf(1,'Rank not specified. Trying to guess ...\n');
     s = svd(Bc);
-    [~, r] = max(s(1:end-1)./s(2:end)); 
+    [~, r1] = max(s(1:end-1)./s(2:end)); 
+     s = svd(Br);
+    [~, r2] = max(s(1:end-1)./s(2:end)); 
+    r = max(r1,r2);
 end
-est_r = r; 
+est_r = r;
 
-[uC, ~, ~] = lansvd(Bc, r, 'L','OPTIONS'); %find the r largest vectors and singulr values of Bc.
-[uR, ~, ~] = lansvd(Br',r, 'L','OPTIONS'); %find the r largest vectors and singulr values of Br.
+[uC, ~, ~] = lansvd(Bc,r,'L','OPTIONS'); %find the r largest vectors and singulr values of Bc.
+[uR, ~, ~] = lansvd(Br',r,'L','OPTIONS'); %find the r largest vectors and singulr values of Br.
+Xr=(uR*(Ac'*uR\Bc'))';% find Xr
+Xc=uC*(Ar*uC\Br); % find Xc
 
-if(~exist('direction', 'var') || isempty(direction))
-    direction=0;
-end
-
-switch direction 
-    case 1 % rows
-        X=(uR*(Ac'*uR\Bc'))'; % find Xr
-    case -1 % columns
-        X=uC*(Ar*uC\Br); % find Xc
-    case 0 % both
-        Xr=(uR*(Ac'*uR\Bc'))'; % find Xr
-        Xc=uC*(Ar*uC\Br); % find Xc
-        cost_Xc=norm(Ar*Xc-Br,'fro')+norm(Xc*Ac-Bc,'fro');
-        cost_Xr=norm(Ar*Xr-Br,'fro')+norm(Xr*Ac-Bc,'fro');
-        
-        % Take solution minimizing loss function
-        if(cost_Xc<cost_Xr)
-            X=Xc;
-        else
-            X=Xr;
-        end
+X = (Xr+Xc)/2;
+%[u ,d, v]  = lansvd(X,r,'L','OPTIONS');
+%X = u(:,1:r)*d(1:r,1:r)*v(:,1:r)';
 end
 

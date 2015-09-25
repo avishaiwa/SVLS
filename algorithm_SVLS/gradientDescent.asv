@@ -52,7 +52,7 @@ if(~exist('m', 'var') || isempty(tol))
     result = zeros(1,max_iter); % set default tolerance
     result(1) = RRMSE(X_hat,m);
 end
-iter=1;
+iter=0;
 X0 = randn(size(X1));
 k_r = size(Ar,1); k_c = size(Ac,2); % get number of measurements
 
@@ -76,10 +76,6 @@ while( (norm(X1-X0,'fro')>tol) && (iter<max_iter))
     %%loss function
     dis(iter)=row_column_l2_loss(optT,optS,Br,Bc,Ar,Ac);
         fprintf('Iter=%d L2 Loss=%3.3f\n', iter, dis(iter))
-        if(~exist('m', 'var') || isempty(tol))
-            result(iter) = RRMSE(X1,m);
-        end
-end
 
 end
 X = optT*optS;

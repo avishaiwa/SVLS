@@ -21,15 +21,11 @@ B=(Ar*Qc\Br*Qr);
 [U S V] = svd(B);
 U = Qc*U; V=Qr*V;
 Xr = U*S*V';
-cost_Xc=norm(Ar*Xc-Br,'fro')+norm(Xc*Ac-Bc,'fro');
-cost_Xr=norm(Ar*Xr-Br,'fro')+norm(Xr*Ac-Bc,'fro');
+%cost_Xc=norm(Ar*Xc-Br,'fro')+norm(Xc*Ac-Bc,'fro');
+%cost_Xr=norm(Ar*Xr-Br,'fro')+norm(Xr*Ac-Bc,'fro');
 
 % Take solution minimizing loss function
-if(cost_Xc<cost_Xr)
-    X=Xc;
-else
-    X=Xr;
-end
+X = (Xr+Xc)/2;
 
 end
 
